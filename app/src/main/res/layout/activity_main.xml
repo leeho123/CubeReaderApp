@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:opencv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <com.rubiks.lehoang.rubiksreader.CustomCameraView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:id="@+id/HelloOpenCvView"
+        opencv:show_fps="true"
+        opencv:camera_id="any" />
+    <Button
+        android:layout_width="500px"
+        android:layout_height="100px"
+        android:text="Next"
+        android:id="@+id/nextBtn"/>
+    <Button
+        android:layout_width="500px"
+        android:layout_height="100px"
+        android:text="Done"
+        android:id="@+id/doneBtn"/>
+    <Button
+        android:layout_width="500px"
+        android:layout_height="100px"
+        android:text="Solve"
+        android:id="@+id/solveBtn"
+        android:layout_below="@id/doneBtn"/>
+
+    <ToggleButton
+        android:id="@+id/togglebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="WhiteBalance on"
+        android:textOff="WhiteBalance off"
+        android:onClick="onToggleClicked"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
