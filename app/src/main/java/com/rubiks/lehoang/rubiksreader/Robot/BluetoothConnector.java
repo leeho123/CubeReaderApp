@@ -1,4 +1,4 @@
-package com.rubiks.lehoang.rubiksreader;
+package com.rubiks.lehoang.rubiksreader.Robot;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

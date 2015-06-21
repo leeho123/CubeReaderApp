@@ -1,10 +1,9 @@
-package com.rubiks.lehoang.rubiksreader;
+package com.rubiks.lehoang.rubiksreader.Solver;
 
-import org.opencv.core.MatOfPoint;
+import com.rubiks.lehoang.rubiksreader.Vision.FaceColour;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,15 +26,17 @@ public class CubeBuilder {
     // Given a list of colours,
     public void add(String colours){
         //get middle colour
+        String newColours="";
         char middle = colours.charAt(4);
 
         FaceColour col = FaceColour.valueOf(Character.toString(middle));
-
+        newColours = colours.substring(0);
         for(FaceColour faceCol : faceToColourMap.keySet()){
             char faceColCh = faceCol.name().charAt(0);
-            colours = colours.replace(faceColCh, faceToColourMap.get(faceCol));
+            newColours = newColours.replace(faceColCh, faceToColourMap.get(faceCol));
         }
-        cube[col.ordinal()] = colours;
+
+        cube[col.ordinal()] = newColours;
     }
 
     public boolean isBuildable(){

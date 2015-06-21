@@ -1,0 +1,73 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+        <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button android:text="Connect" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/testBtn"/>
+
+        <Button android:text="clamp" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/clampBtn" android:layout_below="@id/testBtn"/>
+
+        <Button android:text="unclamp" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/unclampBtn" android:layout_below="@id/clampBtn"/>
+
+        <Button android:text="R" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Rclockwise" android:layout_below="@id/unclampBtn"/>
+
+        <Button android:text="R3" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Ranticlockwise" android:layout_below="@id/Rclockwise"/>
+
+        <Button android:text="L" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Lclockwise" android:layout_below="@id/Ranticlockwise"/>
+
+        <Button android:text="L3" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Lanticlockwise" android:layout_below="@id/Lclockwise"/>
+
+        <Button android:text="F" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Fclockwise" android:layout_below="@id/Lanticlockwise"/>
+
+        <Button android:text="F3" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Fanticlockwise" android:layout_below="@id/Fclockwise"/>
+
+        <Button android:text="B" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Bclockwise" android:layout_below="@id/Fanticlockwise"/>
+
+        <Button android:text="B3" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/Banticlockwise" android:layout_below="@id/Bclockwise"/>
+
+        <Button android:text="RLClock" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/RLClock" android:layout_below="@id/Banticlockwise"/>
+
+        <Button android:text="RLAnti" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/RLAnti" android:layout_below="@id/RLClock"/>
+
+        <Button android:text="Solve" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/solveBtn" android:layout_below="@id/RLAnti"/>
+
+        <Button android:text="R2" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/R2Btn" android:layout_below="@id/solveBtn"/>
+
+        <Button android:text="F2" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/F2Btn" android:layout_below="@id/R2Btn"/>
+
+        <Button android:text="L2" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/L2Btn" android:layout_below="@id/F2Btn"/>
+
+        <Button android:text="B2" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/B2Btn" android:layout_below="@id/L2Btn"/>
+
+        <Button android:text="Reset" android:layout_width="match_parent"
+            android:layout_height="90px" android:id="@+id/reset" android:layout_below="@id/B2Btn"/>
+
+    </RelativeLayout>
+
+</ScrollView>

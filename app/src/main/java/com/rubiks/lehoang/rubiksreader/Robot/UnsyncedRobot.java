@@ -1,12 +1,19 @@
-package com.rubiks.lehoang.rubiksreader;
+package com.rubiks.lehoang.rubiksreader.Robot;
 
-import android.util.Log;import java.lang.Exception;
+import android.util.Log;
+
+import com.rubiks.lehoang.rubiksreader.Solver.CubeSolver;
+import com.rubiks.lehoang.rubiksreader.Helper;
+
+import java.lang.Exception;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by LeHoang on 14/05/2015.
  */
 public class UnsyncedRobot {
-    enum Move{
+    public static enum Move{
         F,R,U,B,L,D,F2,R2,U2,B2,L2,D2,F3,R3,U3,B3,L3,D3,RL,RL3;
     }
     public static final int RIGHTLEFT = 0;
@@ -24,8 +31,84 @@ public class UnsyncedRobot {
     }
 
     public void finish(){
+        flipped = false;
         arms[RIGHTLEFT].reset();
         arms[FRONTBACK].reset();
+    }
+
+    public long[][] profile(){
+        clampAll();
+        Move[] movesToProfileNorm = new Move[]{Move.F, Move.R, Move.B, Move.L,
+                                            Move.F2, Move.R2, Move.B2, Move.L2,
+                                              Move.F3, Move.R3, Move.B3, Move.L3};
+        Move[] movesToProfileFlip = new Move[]{Move.D, Move.U,Move.D2, Move.U2,Move.D3, Move.U3};
+
+        long[][] costs = new long[2][movesToProfileNorm.length + movesToProfileFlip.length];
+
+        long before;
+        long after;
+
+        for(Move move : movesToProfileNorm){
+            before = System.currentTimeMillis();
+            move(move);
+            after = System.currentTimeMillis();
+
+            costs[0][move.ordinal()] = after - before;
+        }
+
+        for(Move move : movesToProfileNorm){
+            if(!flipped) {
+                move(Move.RL);
+            }
+            before = System.currentTimeMillis();
+            move(move);
+            after = System.currentTimeMillis();
+
+            costs[1][move.ordinal()] = after - before;
+        }
+
+        if(flipped){
+           move(Move.RL3);
+        }
+
+        for(Move move: movesToProfileFlip){
+            before = System.currentTimeMillis();
+            move(move);
+            after = System.currentTimeMillis();
+
+            costs[0][move.ordinal()] = after - before;
+            move(Move.RL3);
+        }
+
+        move(Move.RL);
+        for(Move move: movesToProfileFlip){
+            before = System.currentTimeMillis();
+            move(move);
+            after = System.currentTimeMillis();
+
+            costs[1][move.ordinal()] = after - before;
+        }
+
+        finish();
+
+
+        normalise(costs);
+
+        return costs;
+    }
+
+    public static void normalise(long[][] costs){
+        long min0 = Helper.min(costs[0]);
+        long min1 = Helper.min(costs[1]);
+
+        double min = min0 < min1 ? min0 : min1;
+
+        System.out.println(min);
+
+        for(int i = 0; i< costs[0].length; i++){
+            costs[0][i] = Math.round(((double) costs[0][i])/min);
+            costs[1][i] = Math.round(((double) costs[1][i])/min);
+        }
     }
     public void clampAll(){
 
@@ -44,6 +127,13 @@ public class UnsyncedRobot {
         conn2.readMessage();
     }
 
+    public void robotSolve(String solution){
+        String trans = CubeSolver.transform(solution);
+        List<Move> moves = CubeSolver.parseSolution(trans);
+        for(UnsyncedRobot.Move move: moves){
+            move(move);
+        }
+    }
     public void move(Move move){
         Log.d("com.rubiks.lehoang.phonesender", "Performing move: " + move.toString());
         BluetoothConnector sync1 = null;
@@ -127,7 +217,7 @@ public class UnsyncedRobot {
                 sync1 = arms[RIGHTLEFT].clampBoth();
                 sync1.readMessage();
 
-                flipped = !flipped;
+                flipped = true;
 
 
                 break;
@@ -149,7 +239,7 @@ public class UnsyncedRobot {
 
                 sync1 = arms[RIGHTLEFT].clampBoth();
                 sync1.readMessage();
-                flipped = !flipped;
+                flipped = false;
 
                 break;
             case R2:
@@ -184,6 +274,18 @@ public class UnsyncedRobot {
                 break;
             default: break;
         }
+
+    }
+
+    public static void main(String[] args){
+        long[][] costs = {{1779, 1814, 4491, 1881, 1683, 1805, 2039, 2279, 5106, 2153, 1965, 4831, 2015, 1919, 4506, 1994, 1819, 4587},
+                {5415, 1802, 1806, 4498, 1959, 1959, 4819, 2049, 2028, 4778, 2133, 2062, 4796, 1807, 1771, 4673, 1810, 1825}
+                };
+
+        normalise(costs);
+
+        System.out.println(Arrays.toString(costs[0]));
+        System.out.println(Arrays.toString(costs[1]));
 
     }
 }

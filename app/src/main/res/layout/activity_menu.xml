@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+            <Button
+            android:layout_width="500px"
+            android:layout_height="100px"
+            android:text="Connect to robot"
+            android:id="@+id/connectBtn"/>
+
+            <Button
+                android:layout_width="500px"
+                android:layout_height="100px"
+                android:text="Profile"
+                android:id="@+id/profileBtn"
+                android:layout_below="@id/connectBtn"/>
+            <Button
+                android:layout_width="500px"
+                android:layout_height="100px"
+                android:text="Read State"
+                android:id="@+id/readBtn"
+                android:layout_below="@id/profileBtn"/>
+
+            <Button
+                android:layout_width="500px"
+                android:layout_height="100px"
+                android:text="Vision Test"
+                android:id="@+id/visionBtn"
+                android:layout_below="@id/readBtn"/>
+
+            <Button
+                android:layout_width="500px"
+                android:layout_height="100px"
+                android:text="Robot Test"
+                android:id="@+id/robotBtn"
+                android:layout_below="@id/visionBtn"/>
+            <Button
+                android:layout_width="500px"
+                android:layout_height="100px"
+                android:text="Find Solution"
+                android:id="@+id/solutionBtn"
+                android:layout_below="@id/robotBtn"/>
+            <Button
+                android:layout_width="500px"
+                android:layout_height="100px"
+                android:text="Solve"
+                android:id="@+id/robotSolveBtn"
+                android:layout_below="@id/solutionBtn"/>
+            <Button
+                android:layout_width="500px"
+                android:layout_height="100px"
+                android:text="Clamp"
+                android:id="@+id/clampRobotBtn"
+                android:layout_below="@id/robotSolveBtn"/>
+        </RelativeLayout>
+    </ScrollView>
+

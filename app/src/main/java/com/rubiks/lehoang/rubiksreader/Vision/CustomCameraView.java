@@ -1,4 +1,4 @@
-package com.rubiks.lehoang.rubiksreader;
+package com.rubiks.lehoang.rubiksreader.Vision;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -8,6 +8,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.widget.Button;
+
+import com.rubiks.lehoang.rubiksreader.R;
 
 import org.opencv.android.JavaCameraView;
 

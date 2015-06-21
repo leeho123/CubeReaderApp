@@ -1,6 +1,8 @@
-package com.rubiks.lehoang.rubiksreader;
+package com.rubiks.lehoang.rubiksreader.Robot;
 
-import android.util.Log;import java.lang.Exception;import java.lang.String;
+import android.util.Log;
+
+import java.lang.Exception;import java.lang.String;
 
 /**
  * Created by LeHoang on 14/05/2015. Controls 2 arms opposite each other
@@ -36,6 +38,10 @@ public class UnsyncedArms {
     public static final int CLOCK180TWO = 13;
     public static final int ANTI180ONE = 14;
     public static final int ANTI180TWO  = 15;
+
+    public static final int UNCLAMPHALFONE = 16;
+    public static final int UNCLAMPHALFTWO = 17;
+    public static final int UNCLAMPHALFBOTH = 18;
 
     public static final int END_SEQUENCE = -777;
 

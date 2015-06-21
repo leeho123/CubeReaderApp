@@ -1,4 +1,6 @@
-package com.rubiks.lehoang.rubiksreader;
+package com.rubiks.lehoang.rubiksreader.Vision;
+
+import com.rubiks.lehoang.rubiksreader.Helper;
 
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
